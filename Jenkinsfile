@@ -18,7 +18,7 @@ pipeline {
         stage("Test") {
             steps {
                 // Install npm dependencies using sudo (may require elevated privileges)
-                sh "sudo npm install"
+                sh "sudo apt install npm"
 
                 // Run npm test to execute the tests
                 sh "npm test"
