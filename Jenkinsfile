@@ -18,7 +18,11 @@ pipeline {
         stage("Test") {
             steps {
                 // Install npm dependencies using sudo (may require elevated privileges)
-                sh "sudo apt install npm"
+                withNPM(npmrcConfig: 'my-custom-npmrc'){
+                    echo "Performing npm build..."
+                    sh "npm install"
+                }
+                // sh "sudo apt install npm"
 
                 // Run npm test to execute the tests
                 sh "npm test"
